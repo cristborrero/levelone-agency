@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ═══════════════════════════════════════════════════════════
+   LEVELONE AGENCY — Design System Tokens (Tailwind v4)
+   Visual Direction: Dark Editorial Brutalist
+   ═══════════════════════════════════════════════════════════ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ─── Brand Colors ─── */
+  --color-brand-black: #0A0A0A;
+  --color-brand-black-deep: #050505;
+  --color-brand-black-mid: #141414;
+  --color-brand-black-soft: #1E1E1E;
+  --color-brand-white: #F5F0EB;
+  --color-brand-accent: #D4FF00;
+  --color-brand-accent-muted: #B8D94D;
+
+  /* ─── Grey Scale ─── */
+  --color-brand-grey-900: #2A2A2A;
+  --color-brand-grey-700: #4A4A4A;
+  --color-brand-grey-500: #6B6B6B;
+  --color-brand-grey-300: #9A9A9A;
+  --color-brand-grey-100: #E5E5E5;
+
+  /* ─── Functional ─── */
+  --color-brand-success: #00D47E;
+  --color-brand-warning: #FFB800;
+  --color-brand-error: #FF3B3B;
+  --color-brand-info: #3B82F6;
+
+  /* ─── Typography ─── */
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ─── Spacing overrides ─── */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-26: 6.5rem;
+  --spacing-30: 7.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base Styles ─── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-brand-black);
+  color: var(--color-brand-white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-brand-accent);
+  color: var(--color-brand-black);
+}
+
+/* ─── Noise Overlay (Brutalist grain) ─── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-grey-700);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-accent);
 }
